@@ -3,8 +3,9 @@
 
 class Spline {
 public:
-    Spline();
+    Spline(const Table &table);
 
+    double value(std::initializer_list<double> list);
 
 private:
     const Table& table;

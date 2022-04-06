@@ -16,7 +16,16 @@ ArrayDimension::operator double&() {
     return value;
 }
 
+ArrayDimension::operator double() const {
+    assert(dimension == 0);
+    return value;
+}
+
 ArrayDimension &ArrayDimension::operator[](int index) {
+    return arr[index];
+}
+
+ArrayDimension ArrayDimension::operator[](int index) const {
     return arr[index];
 }
 
