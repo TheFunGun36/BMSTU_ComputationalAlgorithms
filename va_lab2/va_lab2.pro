@@ -22,16 +22,16 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     arraydimension.cpp \
     file.cpp \
+    interpolator.cpp \
     main.cpp \
     mainwindow.cpp \
-    spline.cpp \
     table.cpp
 
 HEADERS += \
     arraydimension.h \
     file.h \
+    interpolator.h \
     mainwindow.h \
-    spline.h \
     table.h
 
 FORMS += \

@@ -6,7 +6,9 @@ class Table {
 public:
     Table(int dimesion = 2);
 
-    size_t dimension() const;
+    size_t getDimension() const;
+    const std::vector<double> &getArgs(size_t index) const;
+    const ArrayDimension &getData() const;
 
 private:
     std::vector<std::vector<double>> args;

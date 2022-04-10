@@ -15,6 +15,8 @@ public:
     ArrayDimension &operator[](int index);
     ArrayDimension operator[](int index) const;
 
+    inline size_t getDimension() const { return dimension; }
+
     void resize(size_t sz);
     size_t size();
 private:
