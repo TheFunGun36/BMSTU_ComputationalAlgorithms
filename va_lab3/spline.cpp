@@ -1,14 +1,13 @@
 #include "spline.h"
 
 Spline::Spline(const Table &table)
-    : table(table)
-    , polynomials(table.size() - 1){
-    generatePolynomials();
+    : polynomials(table.size() - 1) {
+    generatePolynomials(table);
 }
 
 double Spline::value(double arg) {
-    int i = 0;
-    while (i < table.size() && arg < table.arg(i))
+    size_t i = 0;
+    while (i < polynomials.size() && arg < polynomials[i].xl)
         i++;
     const Polynomial &p = polynomials[i];
 
@@ -23,7 +22,7 @@ double Spline::value(double arg) {
     return sum;
 }
 
-void Spline::generatePolynomials() {
+void Spline::generatePolynomials(const Table &table) {
     for (size_t i = 0; i < polynomials.size(); i++) {
         polynomials[i].xl = table.arg(i);
         polynomials[i].a() = table.val(i);
@@ -36,14 +35,14 @@ void Spline::generatePolynomials() {
     std::vector<double> n(polynomials.size() - 1);
 
     // Прямой ход
-    genEN(e, n);
+    genEN(e, n, table);
 
     // Обратный ход
-    for (size_t i = polynomials.size() - 2; i > 0; i++)
+    for (size_t i = polynomials.size() - 2; i > 0; i--)
         polynomials[i].c() = e[i] * polynomials[i + 1].c() + n[i];
 }
 
-void Spline::genEN(std::vector<double> &e, std::vector<double> &n) {
+void Spline::genEN(std::vector<double> &e, std::vector<double> &n, const Table &table) {
     e.front() = 0;
     n.front() = 0;
 

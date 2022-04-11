@@ -2,6 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <memory>
+#include "spline.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -16,5 +18,11 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    std::unique_ptr<Spline> spline;
+
+private slots:
+    void onFileOpen();
+    void onCalculate();
+
 };
 #endif // MAINWINDOW_H

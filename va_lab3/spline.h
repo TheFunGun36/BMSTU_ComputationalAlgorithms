@@ -9,11 +9,10 @@ public:
     double value(double arg);
 
 private:
-    const Table &table;
     std::vector<Polynomial> polynomials;
 
-    void generatePolynomials();
-    void genEN(std::vector<double> &e, std::vector<double> &n);
+    void generatePolynomials(const Table &table);
+    void genEN(std::vector<double> &e, std::vector<double> &n, const Table &table);
 };
 
 #endif // SPLINE_H
