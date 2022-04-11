@@ -18,7 +18,7 @@ public:
     inline size_t getDimension() const { return dimension; }
 
     void resize(size_t sz);
-    size_t size();
+    size_t size() const;
 private:
     int dimension;
     double value;

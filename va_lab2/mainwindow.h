@@ -2,6 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "table.h"
+#include "interpolator.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -16,5 +18,11 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    Table table;
+
+private slots:
+    void onFileOpen();
+    void onFileSave();
+    void onCalculate();
 };
 #endif // MAINWINDOW_H

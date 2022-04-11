@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>453</width>
-    <height>129</height>
+    <height>157</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -106,6 +106,47 @@
      </layout>
     </item>
     <item>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>Степени полиномов</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QSpinBox" name="spinPowerX">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="minimum">
+         <number>0</number>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QSpinBox" name="spinPowerY">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="minimum">
+         <number>0</number>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QSpinBox" name="spinPowerZ">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="minimum">
+         <number>0</number>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
      <layout class="QHBoxLayout" name="layout_2">
       <item>
        <widget class="QPushButton" name="buttonCalculate">
@@ -166,7 +207,7 @@
      <x>0</x>
      <y>0</y>
      <width>453</width>
-     <height>22</height>
+     <height>20</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -177,35 +218,11 @@
      <bool>false</bool>
     </property>
     <addaction name="actionLoad"/>
+    <addaction name="actionSave"/>
    </widget>
    <addaction name="menuFile"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
-  <action name="action_4">
-   <property name="text">
-    <string>Столбец</string>
-   </property>
-  </action>
-  <action name="action_5">
-   <property name="text">
-    <string>Строку</string>
-   </property>
-  </action>
-  <action name="action_6">
-   <property name="text">
-    <string>Столбец</string>
-   </property>
-  </action>
-  <action name="action_7">
-   <property name="text">
-    <string>Строку</string>
-   </property>
-  </action>
-  <action name="action_8">
-   <property name="text">
-    <string>Восстановить</string>
-   </property>
-  </action>
   <action name="actionLoad">
    <property name="text">
     <string>Открыть</string>
@@ -214,7 +231,27 @@
     <string>Ctrl+O</string>
    </property>
   </action>
+  <action name="actionSave">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Сохранить</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
+  </action>
  </widget>
+ <tabstops>
+  <tabstop>spinX</tabstop>
+  <tabstop>spinY</tabstop>
+  <tabstop>spinZ</tabstop>
+  <tabstop>spinPowerX</tabstop>
+  <tabstop>spinPowerY</tabstop>
+  <tabstop>buttonCalculate</tabstop>
+  <tabstop>lineResult</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

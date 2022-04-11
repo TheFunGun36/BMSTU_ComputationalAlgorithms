@@ -20,8 +20,14 @@ private:
             const ArrayDimension &table,
             const std::vector<double> &params) const;
 
-    static double approxValue(
-            const std::pair<std::vector<double>, std::vector<double>> &data,
-            double param,
-            size_t power);
+    static std::vector<double> genPolynomial(
+            const std::vector<double> &arg,
+            std::vector<double> val);
+
+    static double calcValue(
+            const std::vector<double> &args,
+            const std::vector<double> &polynomial,
+            double arg);
+
+    static bool fuzzyEq(double a, double b);
 };

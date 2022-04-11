@@ -33,6 +33,6 @@ void ArrayDimension::resize(size_t sz) {
     arr.resize(sz);
 }
 
-size_t ArrayDimension::size() {
+size_t ArrayDimension::size() const {
     return arr.size();
 }

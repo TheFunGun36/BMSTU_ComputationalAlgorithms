@@ -2,6 +2,8 @@
 #include "arraydimension.h"
 #include <vector>
 
+class File;
+
 class Table {
 public:
     Table(int dimesion = 2);
@@ -13,4 +15,6 @@ public:
 private:
     std::vector<std::vector<double>> args;
     ArrayDimension arr;
+
+    friend class File;
 };
