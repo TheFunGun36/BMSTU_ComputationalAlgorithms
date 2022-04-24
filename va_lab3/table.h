@@ -11,6 +11,8 @@ public:
     double &val(size_t index);
     double arg(size_t index) const;
     double val(size_t index) const;
+    double minArg() const;
+    double maxArg() const;
     size_t size() const;
 
 private:

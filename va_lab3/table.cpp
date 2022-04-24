@@ -15,8 +15,8 @@ Table::Table(std::string filename) {
     auto ia = args.begin();
     auto iv = vals.begin();
     for (int i = 0; i < amount; i++) {
-        in >> *ia;
-        in >> *iv;
+        in >> *ia++;
+        in >> *iv++;
     }
 }
 
@@ -25,3 +25,5 @@ double &Table::val(size_t index) { return vals[index]; }
 double Table::arg(size_t index) const { return args[index]; }
 double Table::val(size_t index) const { return vals[index]; }
 size_t Table::size() const { return args.size(); };
+double Table::minArg() const { return args.front(); };
+double Table::maxArg() const { return args.back(); };

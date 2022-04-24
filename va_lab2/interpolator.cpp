@@ -1,5 +1,6 @@
 #include "interpolator.h"
 #include <cassert>
+#include <cmath>
 
 Interpolator::Interpolator(const Table &table, const std::vector<size_t> &powers)
     : table(table),
