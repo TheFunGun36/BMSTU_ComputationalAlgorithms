@@ -1,0 +1,138 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Plotter.cs" type="Script" id=1]
+[ext_resource path="res://BlankCanvas.tres" type="Texture" id=2]
+[ext_resource path="res://MainTheme.tres" type="Theme" id=3]
+[ext_resource path="res://Table.cs" type="Script" id=5]
+
+[node name="MainScene" type="Node2D"]
+
+[node name="Plotter" type="TextureRect" parent="."]
+margin_left = 700.0
+margin_right = 700.0
+texture = ExtResource( 2 )
+script = ExtResource( 1 )
+BackgroundColor = Color( 0, 0, 0, 1 )
+AxesColor = Color( 1, 1, 1, 1 )
+GridColor = Color( 0.662745, 0.662745, 0.662745, 1 )
+PlotColor = Color( 0.364706, 1, 1, 1 )
+PointColor = Color( 1, 0, 0.960784, 1 )
+
+[node name="UI" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+theme = ExtResource( 3 )
+
+[node name="Table" type="VBoxContainer" parent="UI"]
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 479.0
+margin_bottom = 739.0
+script = ExtResource( 5 )
+RowsParentPath = NodePath("Scrollable/Vertical")
+PlotterPath = NodePath("../../Plotter")
+LinePolyPath = NodePath("LineEdit")
+HeadZPath = NodePath("Header/Z")
+
+[node name="Power" type="HBoxContainer" parent="UI/Table"]
+margin_right = 700.0
+margin_bottom = 34.0
+
+[node name="Label" type="Label" parent="UI/Table/Power"]
+margin_top = 5.0
+margin_right = 199.0
+margin_bottom = 29.0
+text = "Степень полинома:"
+
+[node name="SpinBox" type="SpinBox" parent="UI/Table/Power"]
+margin_left = 203.0
+margin_right = 289.0
+margin_bottom = 34.0
+max_value = 10.0
+value = 2.0
+rounded = true
+
+[node name="Label" type="Label" parent="UI/Table"]
+margin_top = 38.0
+margin_right = 700.0
+margin_bottom = 62.0
+text = "Текущий полином:"
+
+[node name="LineEdit" type="LineEdit" parent="UI/Table"]
+margin_top = 66.0
+margin_right = 700.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 700, 0 )
+editable = false
+
+[node name="CheckBox" type="CheckBox" parent="UI/Table"]
+margin_top = 104.0
+margin_right = 700.0
+margin_bottom = 136.0
+text = "Режим двумерной интерполяции"
+
+[node name="AddRemove" type="HBoxContainer" parent="UI/Table"]
+margin_top = 140.0
+margin_right = 700.0
+margin_bottom = 170.0
+
+[node name="AddPoint" type="Button" parent="UI/Table/AddRemove"]
+margin_right = 170.0
+margin_bottom = 30.0
+text = "Добавить точку"
+
+[node name="RemovePoint" type="Button" parent="UI/Table/AddRemove"]
+margin_left = 174.0
+margin_right = 329.0
+margin_bottom = 30.0
+rect_pivot_offset = Vector2( -400, 34 )
+text = "Удалить точку"
+
+[node name="Header" type="HBoxContainer" parent="UI/Table"]
+margin_top = 174.0
+margin_right = 700.0
+margin_bottom = 198.0
+
+[node name="X" type="Label" parent="UI/Table/Header"]
+margin_right = 85.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 85, 0 )
+text = "X"
+align = 1
+
+[node name="Y" type="Label" parent="UI/Table/Header"]
+margin_left = 89.0
+margin_right = 174.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 85, 0 )
+text = "Y"
+align = 1
+
+[node name="Z" type="Label" parent="UI/Table/Header"]
+margin_left = 178.0
+margin_right = 263.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 85, 0 )
+text = "Z"
+align = 1
+
+[node name="P" type="Label" parent="UI/Table/Header"]
+margin_left = 267.0
+margin_right = 352.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 85, 0 )
+text = "Вес"
+align = 1
+
+[node name="Scrollable" type="ScrollContainer" parent="UI/Table"]
+margin_top = 202.0
+margin_right = 700.0
+margin_bottom = 802.0
+rect_min_size = Vector2( 356, 600 )
+
+[node name="Vertical" type="VBoxContainer" parent="UI/Table/Scrollable"]
+
+[connection signal="value_changed" from="UI/Table/Power/SpinBox" to="UI/Table" method="OnPowerChange"]
+[connection signal="toggled" from="UI/Table/CheckBox" to="UI/Table" method="Toggle3D"]
+[connection signal="pressed" from="UI/Table/AddRemove/AddPoint" to="UI/Table" method="AddRow"]
+[connection signal="pressed" from="UI/Table/AddRemove/RemovePoint" to="UI/Table" method="RemoveRow"]

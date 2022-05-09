@@ -1,3 +1,6 @@
 build*
 *.pro.user
 *.autosave
+/va_lab4/.vs
+/va_lab4/.mono
+/va_lab4/.import
